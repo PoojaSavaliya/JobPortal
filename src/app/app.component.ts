@@ -9,12 +9,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  authLoaded = false;
   user$!: Observable<any>;
 
   constructor(private auth: AngularFireAuth, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.user$ = this.auth.authState;
+    this.user$.subscribe(() => {
+      this.authLoaded = true;
+    });
   }
 
   logout() {
@@ -25,7 +29,7 @@ export class AppComponent implements OnInit {
         this.router.navigate(['jobs']);
       })
       .catch((error) => {
-        console.error('Logout error:', error);
+        console.log('Logout error:', error);
       });
   }
 

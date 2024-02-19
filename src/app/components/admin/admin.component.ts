@@ -24,9 +24,7 @@ export class AdminComponent {
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      console.log(params['id']);
       this.store.pipe(select(selectJobById(params['id']))).subscribe((job) => {
-        console.log(job);
         this.job = job;
       });
     });

@@ -33,7 +33,7 @@ export class LoginComponent {
         console.log('User logged out successfully');
       })
       .catch((error) => {
-        console.error('Logout error:', error);
+        console.log('Logout error:', error);
       });
   }
 }

@@ -10,5 +10,5 @@ export const environment = {
     appId: '1:270071255527:web:92df6c8c1e8964c91dad42',
     measurementId: 'G-779CW3QNMD',
   },
-  apiUrl: 'http://localhost:3000/api',
+  apiUrl: 'https://job-portal-3b40c-default-rtdb.firebaseio.com/',
 };

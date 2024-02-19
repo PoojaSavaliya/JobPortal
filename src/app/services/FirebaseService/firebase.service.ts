@@ -3,37 +3,29 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+  private apiUrl = environment.apiUrl;
+
   constructor(private db: AngularFireDatabase, private http: HttpClient) {}
 
   addData(data: any): Observable<any> {
-    return this.http.post(
-      'https://job-portal-3b40c-default-rtdb.firebaseio.com/JobData.json',
-      data
-    );
+    return this.http.post(`${this.apiUrl}/JobData.json`, data);
   }
 
   updateData(id: string, newData: any): Observable<any> {
-    console.log(newData);
-    return this.http.put<void>(
-      `https://job-portal-3b40c-default-rtdb.firebaseio.com/JobData/${id}.json`,
-      newData
-    );
+    return this.http.put<void>(`${this.apiUrl}/JobData/${id}.json`, newData);
   }
 
   deleteData(id: string): Observable<any> {
-    return this.http.delete<void>(
-      `https://job-portal-3b40c-default-rtdb.firebaseio.com/JobData/${id}.json`
-    );
+    return this.http.delete<void>(`${this.apiUrl}/JobData/${id}.json`);
   }
 
   getAllData(): Observable<any> {
-    return this.http.get(
-      'https://job-portal-3b40c-default-rtdb.firebaseio.com/.json'
-    );
+    return this.http.get(`${this.apiUrl}.json`);
   }
 }

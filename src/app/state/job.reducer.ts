@@ -13,9 +13,6 @@ export const initialState: JobState = {
 export const jobReducer = createReducer(
   initialState,
   on(JobActions.jobsLoaded, (state, { JobData }) => {
-    console.log(JobData);
-    console.log(state);
-
     return { ...state, JobData };
   })
 );

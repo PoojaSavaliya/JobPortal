@@ -34,7 +34,6 @@ export class JobsComponent implements OnInit {
   }
 
   applyFilter(filter: any) {
-    console.log(filter);
     this.selectedFilter = filter.tab.textLabel;
     if (filter.tab.textLabel === 'All') {
       this.filteredJobs$ = this.allJobs$;

@@ -1,9 +1,20 @@
-<ng-container *ngIf="user$ | async as user; else login">
-  <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+<ng-container *ngIf="authLoaded">
+  <ng-container *ngIf="!(user$ | async); else login">
+    <app-login></app-login>
+  </ng-container>
+  <ng-template #login>
+    <div style="display: flex; justify-content: flex-end">
+      <div class="button-container" *ngIf="user$ | async as user">
+        <button mat-raised-button color="primary" routerLink="/add-job">
+          Create Job
+        </button>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </ng-template>
+
+  <router-outlet></router-outlet>
 </ng-container>
-
-<ng-template #login>
-  <button mat-raised-button color="primary" (click)="goToLogin()">Login</button>
-</ng-template>
-
-<router-outlet></router-outlet>

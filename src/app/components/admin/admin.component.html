@@ -78,5 +78,7 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <button mat-raised-button color="primary" type="submit">
+    {{ job ? "Update" : "Add" }}
+  </button>
 </form>

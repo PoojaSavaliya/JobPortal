@@ -4,7 +4,6 @@ import { JobState } from './job.reducer';
 export const selectJobState = createFeatureSelector<JobState>('JobData');
 
 export const selectJobs = createSelector(selectJobState, (state: JobState) => {
-  console.log(state.JobData);
   return state.JobData;
 });
 

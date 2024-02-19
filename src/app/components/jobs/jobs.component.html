@@ -2,12 +2,6 @@
   <h1>Welcome to Job Portal</h1>
 </div>
 
-<div class="button-container" *ngIf="user$ | async as user">
-  <button mat-raised-button color="primary" routerLink="/add-job">
-    Add Job
-  </button>
-</div>
-
 <mat-tab-group (selectedTabChange)="applyFilter($event)">
   <mat-tab
     *ngFor="let jobName of jobNames$ | async"
@@ -25,7 +19,6 @@
       <p>{{ job.jobDescription }}</p>
       <p><strong>Location:</strong> {{ job.location }}</p>
       <p><strong>Salary:</strong> {{ job.salary }}</p>
-
       <p><strong>Requirements:</strong> {{ job.requirements }}</p>
     </mat-card-content>
     <mat-card-actions>
