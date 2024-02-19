@@ -1,0 +1,50 @@
+<div class="welcome-message">
+  <h1>Welcome to Job Portal</h1>
+</div>
+
+<div class="button-container" *ngIf="user$ | async as user">
+  <button mat-raised-button color="primary" routerLink="/add-job">
+    Add Job
+  </button>
+</div>
+
+<mat-tab-group (selectedTabChange)="applyFilter($event)">
+  <mat-tab
+    *ngFor="let jobName of jobNames$ | async"
+    [label]="jobName"
+  ></mat-tab>
+</mat-tab-group>
+
+<div class="job-cards-container">
+  <mat-card *ngFor="let job of filteredJobs$ | async" class="job-card">
+    <mat-card-header>
+      <mat-card-title>{{ job.jobName }}</mat-card-title>
+      <mat-card-subtitle>{{ job.companyName }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ job.jobDescription }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Salary:</strong> {{ job.salary }}</p>
+
+      <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        *ngIf="user$ | async as user"
+        mat-button
+        color="primary"
+        (click)="delete(job.id)"
+      >
+        Delete
+      </button>
+      <button
+        *ngIf="user$ | async as user"
+        mat-button
+        color="primary"
+        (click)="update(job.id)"
+      >
+        Update
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

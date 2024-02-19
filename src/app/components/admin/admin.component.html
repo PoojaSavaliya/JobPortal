@@ -1,0 +1,82 @@
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Job Name</mat-label>
+    <mat-select formControlName="jobName">
+      <mat-option *ngFor="let name of jobNames" [value]="name">{{
+        name
+      }}</mat-option>
+    </mat-select>
+    <mat-error>
+      <span
+        *ngIf="
+          !jobForm.get('jobName')?.valid && jobForm.get('jobName')?.touched
+        "
+      >
+        Job Name is required
+      </span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Job Description</mat-label>
+    <textarea matInput formControlName="jobDescription"></textarea>
+    <mat-error
+      *ngIf="
+        !jobForm.get('jobDescription')?.valid &&
+        jobForm.get('jobDescription')?.touched
+      "
+    >
+      Job Description is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Company Name</mat-label>
+    <input matInput type="text" formControlName="companyName" />
+    <mat-error
+      *ngIf="
+        !jobForm.get('companyName')?.valid &&
+        jobForm.get('companyName')?.touched
+      "
+    >
+      Company Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Location</mat-label>
+    <input matInput type="text" formControlName="location" />
+    <mat-error
+      *ngIf="
+        !jobForm.get('location')?.valid && jobForm.get('location')?.touched
+      "
+    >
+      Location is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Salary</mat-label>
+    <input matInput type="text" formControlName="salary" />
+    <mat-error
+      *ngIf="!jobForm.get('salary')?.valid && jobForm.get('salary')?.touched"
+    >
+      Salary is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Requirements</mat-label>
+    <textarea matInput formControlName="requirements"></textarea>
+    <mat-error
+      *ngIf="
+        !jobForm.get('requirements')?.valid &&
+        jobForm.get('requirements')?.touched
+      "
+    >
+      Requirements are required
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
