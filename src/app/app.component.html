@@ -3,8 +3,8 @@
     <app-login></app-login>
   </ng-container>
   <ng-template #login>
-    <div style="display: flex; justify-content: flex-end">
-      <div class="button-container" *ngIf="user$ | async as user">
+    <div class="button-container">
+      <div class="create" *ngIf="user$ | async as user">
         <button mat-raised-button color="primary" routerLink="/add-job">
           Create Job
         </button>

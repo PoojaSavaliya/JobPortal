@@ -1,3 +1,8 @@
 .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create {
   margin-right: 10px;
 }
